@@ -22,6 +22,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "cmsis_os2.h"
+#include <stdint.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -51,12 +52,16 @@ static void MX_GPIO_Init(void);
 static void MX_FMC_Init(void);
 /* USER CODE BEGIN PFP */
 int a = 1;
+void testmemory(void);
+void mysdraminit(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 void app_main(void *argument)
 {
+  mysdraminit();
+  testmemory();
 	while (1) {
 		osDelay(5000);
 		a++;
@@ -195,7 +200,7 @@ static void MX_FMC_Init(void)
   SdramTiming.ExitSelfRefreshDelay = 8;
   SdramTiming.SelfRefreshTime = 6;
   SdramTiming.RowCycleDelay = 6;
-  SdramTiming.WriteRecoveryTime = 4;
+  SdramTiming.WriteRecoveryTime = 2;
   SdramTiming.RPDelay = 2;
   SdramTiming.RCDDelay = 2;
 
