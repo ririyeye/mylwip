@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "cmsis_os2.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -50,12 +50,18 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_FMC_Init(void);
 /* USER CODE BEGIN PFP */
-
+int a = 1;
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void app_main(void *argument)
+{
+	while (1) {
+		osDelay(5000);
+		a++;
+	}
+}
 /* USER CODE END 0 */
 
 /**
@@ -88,7 +94,11 @@ int main(void)
   MX_GPIO_Init();
   MX_FMC_Init();
   /* USER CODE BEGIN 2 */
+	int osret = osKernelInitialize();
 
+	osThreadId_t ost = osThreadNew(&app_main, NULL, NULL);
+
+	osKernelStart();
   /* USER CODE END 2 */
 
   /* Infinite loop */
