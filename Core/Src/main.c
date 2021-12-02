@@ -61,7 +61,7 @@ void mysdraminit(void);
 void app_main(void *argument)
 {
   mysdraminit();
-  testmemory();
+  //testmemory();
 	while (1) {
 		osDelay(5000);
 		a++;
