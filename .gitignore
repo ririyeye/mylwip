@@ -30,3 +30,17 @@
 *.exe
 *.out
 *.app
+*.crf
+MDK-ARM/mylwip/mylwip.map
+MDK-ARM/mylwip/mylwip.lnp
+MDK-ARM/mylwip/mylwip.htm
+MDK-ARM/mylwip/mylwip.hex
+MDK-ARM/mylwip/mylwip.build_log.htm
+MDK-ARM/mylwip/mylwip.axf
+MDK-ARM/mylwip/mylwip_mylwip.dep
+MDK-ARM/DebugConfig/mylwip_STM32F429IGTx.dbgconf
+MDK-ARM/startup_stm32f429xx.lst
+MDK-ARM/mylwip.uvguix.ririyeye
+MDK-ARM/EventRecorderStub.scvd
+MDK-ARM/JLinkLog.txt
+MDK-ARM/mylwip/ExtDll.iex
