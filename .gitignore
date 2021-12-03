@@ -44,3 +44,6 @@ MDK-ARM/mylwip.uvguix.ririyeye
 MDK-ARM/EventRecorderStub.scvd
 MDK-ARM/JLinkLog.txt
 MDK-ARM/mylwip/ExtDll.iex
+*.__i
+*._ia
+MDK-ARM/mylwip.uvguix.*
