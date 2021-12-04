@@ -469,6 +469,11 @@
               <FileType>1</FileType>
               <FilePath>../Core/Src/stm32f4xx_hal_msp.c</FilePath>
             </File>
+            <File>
+              <FileName>lan8720.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\bspdriver\lan8720.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

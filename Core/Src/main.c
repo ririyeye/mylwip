@@ -68,6 +68,7 @@ void app_main(void *argument)
 {
   mysdraminit();
   PCF8574_Init();
+  LAN8720_Init();
   //testmemory();
 	while (1) {
 		osDelay(5000);
