@@ -5,6 +5,7 @@
 		"stdint.h": "c",
 		"cmsis_os2.h": "c",
 		"stm32f4xx_hal_conf.h": "c",
-		"rt_misc.h": "c"
+		"rt_misc.h": "c",
+		"pcf8574.h": "c"
 	}
 }

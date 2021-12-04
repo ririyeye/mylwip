@@ -10,14 +10,14 @@
 
             "includePath": [
                 "${homecompilerPath}",
+                "C:\\Users\\ririyeye\\Desktop\\mylwip\\bspdriver\\**",
                 "C:\\Users\\ririyeye\\Desktop\\mylwip\\Core\\**",
                 "C:\\Users\\ririyeye\\Desktop\\mylwip\\Drivers\\**"
             ],
             "defines": [
                 "STM32F429xx",
                 "USE_HAL_DRIVER",
-                "__CC_ARM",
-                "$comdef"
+                "__CC_ARM"
             ],
             "intelliSenseMode": "gcc-arm"
         }
