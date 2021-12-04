@@ -60,12 +60,19 @@ static void MX_ETH_Init(void);
 int a = 1;
 void testmemory(void);
 void mysdraminit(void);
+void Timer_recoderTim(void *arg)
+{
+	HAL_IncTick();
+}
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 void app_main(void *argument)
 {
+  osTimerId_t idt = osTimerNew(Timer_recoderTim, osTimerPeriodic, NULL, NULL);
+	osTimerStart(idt , 1);
   mysdraminit();
   PCF8574_Init();
   LAN8720_Init();
@@ -107,7 +114,7 @@ int main(void)
   MX_GPIO_Init();
   MX_FMC_Init();
   MX_I2C2_Init();
-  MX_ETH_Init();
+  //MX_ETH_Init();
   /* USER CODE BEGIN 2 */
 	int osret = osKernelInitialize();
 
