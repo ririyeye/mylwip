@@ -4,6 +4,7 @@
 #include "main.h"
 #include "cmsis_os2.h"
 #include <string.h>
+#include "FreeRTOS.h"
 #define u32 uint32_t
 #define u16 uint16_t
 #define Bank5_SDRAM_ADDR ((u32)(0XC0000000))
@@ -19,7 +20,7 @@
 #define SDRAM_MODEREG_OPERATING_MODE_STANDARD ((u16)0x0000)
 #define SDRAM_MODEREG_WRITEBURST_MODE_PROGRAMMED ((u16)0x0000)
 #define SDRAM_MODEREG_WRITEBURST_MODE_SINGLE ((u16)0x0200)
-
+#if 0
 static int allocflg = 0;
 
 unsigned __rt_heap_extend(unsigned size, void **block)
@@ -33,7 +34,7 @@ unsigned __rt_heap_extend(unsigned size, void **block)
 
 	return 0;
 }
-
+#endif
 extern SDRAM_HandleTypeDef hsdram1;
 unsigned char SDRAM_Send_Cmd(unsigned char bankx, unsigned char cmd, unsigned char refresh, unsigned short regval)
 {
@@ -59,7 +60,7 @@ void mysdraminit()
 {
 	// SDRAM控制器初始化完成以后还需要按照如下顺序初始化SDRAM
 	SDRAM_Send_Cmd(0, FMC_SDRAM_CMD_CLK_ENABLE, 1, 0); //时钟配置使能
-	osDelay(10); //至少延时200us
+	HAL_Delay(10); //至少延时200us
 	SDRAM_Send_Cmd(0, FMC_SDRAM_CMD_PALL, 1, 0); //对所有存储区预充电
 	SDRAM_Send_Cmd(0, FMC_SDRAM_CMD_AUTOREFRESH_MODE, 8, 0); //设置自刷新次数
 		//配置模式寄存器,SDRAM的bit0~bit2为指定突发访问的长度，
@@ -80,7 +81,6 @@ void mysdraminit()
 }
 
 #if 0
-#include <stdlib.h>
 char *testbuff[64];
 int index = 0;
 int checkerr = 0;
@@ -88,7 +88,7 @@ const int testlen = 1000 * 1024;
 void testmemory(void)
 {
 	while (1) {
-		char *buff = malloc(testlen);
+		char *buff = pvPortMalloc(testlen);
 		if (!buff) {
 			break;
 		}
@@ -107,7 +107,7 @@ void testmemory(void)
 	}
 
 	for (int i = 0; i < index; i++) {
-		free(testbuff[i]);
+		vPortFree(testbuff[i]);
 		testbuff[i] = 0;
 	}
 }

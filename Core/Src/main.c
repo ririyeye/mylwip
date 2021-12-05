@@ -70,10 +70,6 @@ void StartDefaultTask(void *argument);
 int a = 1;
 void testmemory(void);
 void mysdraminit(void);
-void Timer_recoderTim(void *arg)
-{
-	HAL_IncTick();
-}
 
 /* USER CODE END PFP */
 
@@ -81,11 +77,8 @@ void Timer_recoderTim(void *arg)
 /* USER CODE BEGIN 0 */
 void app_main(void *argument)
 {
-  osTimerId_t idt = osTimerNew(Timer_recoderTim, osTimerPeriodic, NULL, NULL);
-	osTimerStart(idt , 1);
-  mysdraminit();
-  PCF8574_Init();
-  LAN8720_Init();
+  //PCF8574_Init();
+  //LAN8720_Init();
   //testmemory();
 	while (1) {
 		osDelay(5000);
@@ -126,6 +119,7 @@ int main(void)
   MX_I2C2_Init();
   MX_ETH_Init();
   /* USER CODE BEGIN 2 */
+  mysdraminit();
 	int osret = osKernelInitialize();
 
 	osThreadId_t ost = osThreadNew(&app_main, NULL, NULL);

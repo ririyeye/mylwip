@@ -129,6 +129,7 @@ static osKernelState_t KernelState = osKernelInactive;
 
     static HeapRegion_t xHeapRegions[] = {
       { ucHeap, configTOTAL_HEAP_SIZE },
+      { (uint8_t *)0XC0000000,32 * 1024 * 1024},//extern sdram 32M
       { NULL,   0                     }
     };
   #else

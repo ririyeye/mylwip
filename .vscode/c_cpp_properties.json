@@ -89,9 +89,10 @@
 
             "includePath": [
                 "${homecompilerPath}",
-                "C:\\Users\\ririyeye\\Desktop\\mylwip\\bspdriver\\**",
-                "C:\\Users\\ririyeye\\Desktop\\mylwip\\Core\\**",
-                "C:\\Users\\ririyeye\\Desktop\\mylwip\\Drivers\\**"
+                "Middlewares\\**",
+                "bspdriver\\**",
+                "Core\\**",
+                "Drivers\\**"
             ],
             "defines": [
                 "${f4def}"
