@@ -106,8 +106,6 @@ int main(void)
   MX_FMC_Init();
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
-  PCF8574_Init();
-  LAN8720_power_on();
   mysdraminit();
   /* USER CODE END 2 */
 

@@ -5,7 +5,7 @@ extern ETH_HandleTypeDef heth;
 void LAN8720_power_on(void)
 {
 	PCF8574_WriteBit(ETH_RESET_IO, 1);
-	HAL_Delay(100);
+	osDelay(100);
 	PCF8574_WriteBit(ETH_RESET_IO, 0);
 }
 
