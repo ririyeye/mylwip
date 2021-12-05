@@ -65,7 +65,6 @@ static void MX_I2C2_Init(void);
 void StartDefaultTask(void *argument);
 
 /* USER CODE BEGIN PFP */
-int a = 1;
 void testmemory(void);
 void mysdraminit(void);
 
@@ -73,16 +72,7 @@ void mysdraminit(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void app_main(void *argument)
-{
-  //PCF8574_Init();
-  //LAN8720_Init();
-  //testmemory();
-	while (1) {
-		osDelay(5000);
-		a++;
-	}
-}
+
 /* USER CODE END 0 */
 
 /**
@@ -116,12 +106,9 @@ int main(void)
   MX_FMC_Init();
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
+  PCF8574_Init();
+  LAN8720_power_on();
   mysdraminit();
-	int osret = osKernelInitialize();
-
-	osThreadId_t ost = osThreadNew(&app_main, NULL, NULL);
-
-	osKernelStart();
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -349,6 +336,7 @@ void StartDefaultTask(void *argument)
   /* init code for LWIP */
   MX_LWIP_Init();
   /* USER CODE BEGIN 5 */
+  //testmemory();
   /* Infinite loop */
   for(;;)
   {
